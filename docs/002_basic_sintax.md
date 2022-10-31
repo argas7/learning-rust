@@ -47,6 +47,20 @@
   if st_number > nd_number {} // good
   ```
 
+- É possível utilizar a sintaxe de **as** para realizarmos casting na linguagem;
+  ```rust
+  let float_number = 10 as f32; // this works!!!
+  ```
+
+- É possível escrever sequências com a seginte sitaxe: `initial_sequence_value..end_sequence_value`
+  ```rust
+  let sequencia_de_1_a_20 = 1..20;
+
+  let start_sequece = 1;
+  let end_sequence = 20;
+
+  let other_sequence_1_a_20 = start_sequence..end_sequence;
+  ```
 ## Tipos de dados
 
 - Strings

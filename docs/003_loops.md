@@ -41,3 +41,5 @@ while factorial_input != 1 {
 
 print!("{} fatorial é {}\n", initial_factor, factorial);
 ```
+
+3. Faça os mesmos exemplos utilizando a sintaxe de loops do tipo **for**

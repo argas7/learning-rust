@@ -122,10 +122,54 @@ fn _factorial_func() {
     print!("{} fatorial é {}\n", initial_factor, factorial);
 }
 
+fn _sum_digits_func_with_for_sintax() {
+    println!("Digite algum número:");
+
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Error while reading data input");
+    let input_integer = _parse_int(input);
+
+    fn recursive_factorial(previous_sum: i32, value: i32) -> i32 {
+        if (value / 10) == 0 {
+            return previous_sum + value;
+        }
+
+        let rest: i32 = value % 10;
+        let sum = previous_sum + rest;
+
+        return recursive_factorial(sum, value / 10);
+    }
+
+    print!("Valor da soma dos dígitos é {}\n", recursive_factorial(0, input_integer));
+}
+
+fn _factorial_func_with_for_sintax() {
+    println!("Digite o valor a ser calculado:");
+
+    let mut input_f = String::new();
+    io::stdin()
+        .read_line(&mut input_f)
+        .expect("Error while reading data input");
+
+    let factorial_input: i32 = _parse_int(input_f);
+    let mut factorial: i32 = 1;
+    let initial_factor: i32 = factorial_input;
+
+    for i in 1..initial_factor {
+        factorial *= factorial_input - i + 1;
+    }
+
+    print!("{} fatorial é {}\n", initial_factor, factorial);
+}
+
 fn main() {
-  // _hello_world_code();  // uncomment if want to test
-  // _variables_and_types_code();  // uncomment if want to test
-  // _conditional_code();  // uncomment if want to test
-  // _sum_digits_func();  // uncomment if want to test
-  _factorial_func();
+    // _hello_world_code(); // uncomment if want to test
+    // _variables_and_types_code(); // uncomment if want to test
+    // _conditional_code(); // uncomment if want to test
+    // _sum_digits_func(); // uncomment if want to test
+    // _factorial_func(); // uncomment if want to test
+    // _factorial_func_with_for_sintax();
+    _sum_digits_func_with_for_sintax();
 }
