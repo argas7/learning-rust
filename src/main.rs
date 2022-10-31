@@ -1,14 +1,23 @@
 use std::io;
 
-fn main() {
-    // ########## HELLO WORLD ##########
+fn _parse_int(data: String) -> i32 {
+    let integer_value: i32 = data
+        .trim() // remove initial and final spaces
+        .parse::<i32>() // parse from string to int
+        .unwrap(); // uncapsule result - discouraged use
 
+    return integer_value;
+}
+
+fn _hello_world_code() {
     let my_st_var = "Hello World";
     let my_nd_var_typed: &str = "Hello World";
 
     println!("Not typed var: {}", my_st_var);
     println!("Typed var {}", my_nd_var_typed);
+}
 
+fn _variables_and_types_code() {
     // ########## VARIABLES ##########
 
     let unmutted_var = "Alyson";
@@ -41,9 +50,9 @@ fn main() {
 
     let _boolean_var_truthy: bool = true;
     let _boolean_var_falsy: bool = false;
+}
 
-    // ########## CONDITIONAL FLOW ##########
-
+fn _conditional_code() {
     let st_number: i8 = 10;
     let nd_number: i8 = 20;
 
@@ -55,25 +64,19 @@ fn main() {
         println!("{} e {} são iguais", st_number, nd_number);
     }
 
-    // ########## COMPARING USER INPUT NUMBERS ##########
-
     println!("Digite o valor de x: ");
     let mut data_input_1 = String::new();
     io::stdin()
         .read_line(&mut data_input_1) // try to read some input or throws error
         .expect("Error while reading data input number 1"); // handling with error throwed
 
-    let x = data_input_1
-        .trim() // remove initial and final spaces
-        .parse::<i32>() // parse from string to int
-        .unwrap(); // uncapsule result - discouraged use
-
+    let x = _parse_int(data_input_1);
     println!("Digite o valor de y: ");
     let mut data_input_2 = String::new();
     io::stdin()
         .read_line(&mut data_input_2)
         .expect("Error while reading data input number 2");
-    let y = data_input_2.trim().parse::<i32>().unwrap();
+    let y = _parse_int(data_input_2);
 
     if x > y {
         println!("{}:x é maior que {}:y", x, y);
@@ -82,14 +85,15 @@ fn main() {
     } else {
         println!("{}:x e {}:y são iguais", x, y);
     }
+}
 
-    // ########################## WHILE ##############################
+fn _sum_digits_func() {
     let mut sum = 0;
     let mut input = String::new();
     io::stdin()
         .read_line(&mut input)
         .expect("Error while reading data input");
-    let mut input_integer = input.trim().parse::<i32>().unwrap();
+    let mut input_integer = _parse_int(input);
 
     while input_integer != 0 {
         let rest: i32 = input_integer % 10;
@@ -98,13 +102,15 @@ fn main() {
     }
 
     print!("Valor da soma dos dígitos é {}\n", sum);
+}
 
+fn _factorial_func() {
     let mut input_f = String::new();
     io::stdin()
         .read_line(&mut input_f)
         .expect("Error while reading data input");
 
-    let mut factorial_input: i32 = input_f.trim().parse::<i32>().unwrap();
+    let mut factorial_input: i32 = _parse_int(input_f);
     let mut factorial: i32 = 1;
     let initial_factor = factorial_input;
 
@@ -114,4 +120,12 @@ fn main() {
     }
 
     print!("{} fatorial é {}\n", initial_factor, factorial);
+}
+
+fn main() {
+  // _hello_world_code();  // uncomment if want to test
+  // _variables_and_types_code();  // uncomment if want to test
+  // _conditional_code();  // uncomment if want to test
+  // _sum_digits_func();  // uncomment if want to test
+  _factorial_func();
 }
