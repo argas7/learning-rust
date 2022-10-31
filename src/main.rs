@@ -82,4 +82,36 @@ fn main() {
     } else {
         println!("{}:x e {}:y são iguais", x, y);
     }
+
+    // ########################## WHILE ##############################
+    let mut sum = 0;
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Error while reading data input");
+    let mut input_integer = input.trim().parse::<i32>().unwrap();
+
+    while input_integer != 0 {
+        let rest: i32 = input_integer % 10;
+        sum += rest;
+        input_integer = input_integer / 10;
+    }
+
+    print!("Valor da soma dos dígitos é {}\n", sum);
+
+    let mut input_f = String::new();
+    io::stdin()
+        .read_line(&mut input_f)
+        .expect("Error while reading data input");
+
+    let mut factorial_input: i32 = input_f.trim().parse::<i32>().unwrap();
+    let mut factorial: i32 = 1;
+    let initial_factor = factorial_input;
+
+    while factorial_input != 1 {
+        factorial *= factorial_input;
+        factorial_input -= 1;
+    }
+
+    print!("{} fatorial é {}\n", initial_factor, factorial);
 }
